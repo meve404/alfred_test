@@ -10,7 +10,7 @@ class EndPointsTest(TestCase):
         driver = random.randint(1, 20)
         pickUpCoordinates = [22,6]
         deliverToCoordinates = [18,14]
-        response = requests.post(f'http://dummyweb.live/alfred-api/make-order/{driver}/{now}/{pickUpCoordinates}/{deliverToCoordinates}')
+        response = requests.post(f'https://dummyweb.live/alfred-api/make-order/{driver}/{now}/{pickUpCoordinates}/{deliverToCoordinates}')
         Translate_response = response.json()
         print('\nRespuesta_servidor_hacer_orden:',Translate_response, '\n')
         check_response_id = Translate_response[0]['id']
@@ -21,7 +21,7 @@ class EndPointsTest(TestCase):
         driver = 8
         pickUpCoordinates = [92,23]
         deliverToCoordinates = [83,4]
-        response = requests.post(f'http://dummyweb.live/alfred-api/make-order/{driver}/{now}/{pickUpCoordinates}/{deliverToCoordinates}')
+        response = requests.post(f'https://dummyweb.live/alfred-api/make-order/{driver}/{now}/{pickUpCoordinates}/{deliverToCoordinates}')
         Translate_response = response.json()
         print('\nRespuesta_servidor_fallar_hacer_orden:',Translate_response, '\n')
         check_response_id = Translate_response[0]['answer']
@@ -29,7 +29,7 @@ class EndPointsTest(TestCase):
     
     def test_get_orders_success(self): # se logra conseguir las ordenes
         date = '2022-10-25'
-        response = requests.get(f'http://dummyweb.live/alfred-api/get-orders/{date}')
+        response = requests.get(f'https://dummyweb.live/alfred-api/get-orders/{date}')
         Translate_response = response.json()
         print('\nRespuesta_servidor_obtener_orden:',Translate_response, '\n')
         check_response_id = Translate_response[0]['id']
@@ -37,7 +37,7 @@ class EndPointsTest(TestCase):
     
     def test_get_orders_fail(self): # El formato no de Date no es el esperado
         date = '25-10-2022'
-        response = requests.get(f'http://dummyweb.live/alfred-api/get-orders/{date}')
+        response = requests.get(f'https://dummyweb.live/alfred-api/get-orders/{date}')
         Translate_response = response.json()
         print('\nRespuesta_servidor_fallar_obtener_orden:',Translate_response, '\n')
         check_response_id = Translate_response[0]['answer']
@@ -46,7 +46,7 @@ class EndPointsTest(TestCase):
     def test_get_driver_orders_success(self): # se logran conseguir las ordenes del conductor assignado
         date = '2022-10-25'
         driver = 15
-        response = requests.get(f'http://dummyweb.live/alfred-api/get-driver-orders/{date}/{driver}') 
+        response = requests.get(f'https://dummyweb.live/alfred-api/get-driver-orders/{date}/{driver}') 
         Translate_response = response.json()
         print('\nRespuesta_servidor_obtener_orden_conduct:',Translate_response, '\n')
         check_response_id = Translate_response[0]['ordersName']
@@ -56,7 +56,7 @@ class EndPointsTest(TestCase):
     def test_get_driver_orders_fail(self): # El formato no de Date no es el esperado
         date = '25-10-2022'
         driver = 1
-        response = requests.get(f'http://dummyweb.live/alfred-api/get-driver-orders/{date}/{driver}') 
+        response = requests.get(f'https://dummyweb.live/alfred-api/get-driver-orders/{date}/{driver}') 
         Translate_response = response.json()
         print('\nRespuesta_servidor_fallar_obtener_orden_conduct:',Translate_response, '\n')
         check_response_id = Translate_response[0]['answer']
@@ -66,7 +66,7 @@ class EndPointsTest(TestCase):
         now = timezone.now()
         lat = 20
         lng = 60
-        response = requests.get(f'http://dummyweb.live/alfred-api/search-driver/{lat}/{lng}/{now}')
+        response = requests.get(f'https://dummyweb.live/alfred-api/search-driver/{lat}/{lng}/{now}')
         Translate_response = response.json()
         print('\nRespuesta_servidor_buscar_conductor:',Translate_response, '\n')
         check_response_id = Translate_response['id']
@@ -76,7 +76,7 @@ class EndPointsTest(TestCase):
         now = '24-10-2022'
         lat = 10
         lng = 70
-        response = requests.get(f'http://dummyweb.live/alfred-api/search-driver/{lat}/{lng}/{now}')
+        response = requests.get(f'https://dummyweb.live/alfred-api/search-driver/{lat}/{lng}/{now}')
         Translate_response = response.json()
         print('\nRespuesta_servidor_fallar_buscar_conductor_fecha:',Translate_response, '\n')
         check_response_id = Translate_response[0]['answer']
@@ -87,7 +87,7 @@ class EndPointsTest(TestCase):
         now = datetime(year=2022, month=10, day=22, hour=23, minute=0, second=0, microsecond=233, tzinfo=zone)
         lat = 70
         lng = 90
-        response = requests.get(f'http://dummyweb.live/alfred-api/search-driver/{lat}/{lng}/{now}')
+        response = requests.get(f'https://dummyweb.live/alfred-api/search-driver/{lat}/{lng}/{now}')
         Translate_response = response.json()
         print('\nRespuesta_servidor_fallar_buscar_conductor_404:',Translate_response, '\n')
         check_response_id = Translate_response[0]['message']
