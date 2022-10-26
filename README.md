@@ -14,3 +14,4 @@ Para ejecutar:
 - test_search_driver_success (para localizar un conductor dependiendo de su locación, la fecha/hora y si tiene menos de 3 domicilios)
 - test_search_driver_fail_date (Si el usuario envía la fecha con un formato diferente a año-mes-día hora:min:segundos.microsegundos Zona Horaria)
 - test_search_driver_fail_search (si no hay conductores disponibles)
+- El unitTest se puede ver en: dashboard/tests.py
